@@ -38,9 +38,7 @@ function createRobot(words) {
       words.push(newWord);
     },
     delete: function(wordToDelete) {
-      words = words.filter(function(word) {
-        return word !== wordToDelete;
-      });
+      words = words.filter(word => word !== wordToDelete);
     }
   };
 }
