@@ -1,0 +1,18 @@
+{
+  "env": {
+    "browser": true,
+    # "es6": true # Pour éviter l'erreur 'unexpected token' du premier 'let'
+  },
+  "extends": "eslint:recommended",
+  "rules": {
+    "indent": ["error", 2],
+    "quotes": ["error", "single"],
+    "semi": ["error", "always"],
+    "no-console": "off",
+    "eqeqeq": "error",
+    "no-else-return": "error"
+  },
+  "parserOptions": {
+    "ecmaVersion": 6 # indique que l'on écrit en ES6
+  }
+}

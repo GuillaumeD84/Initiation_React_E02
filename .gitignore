@@ -1,0 +1,4 @@
+.DS_Store     # Fichier système sous mac OS
+Thumbs.db     # Fichier système sous windows
+/node_modules # Dossier contenant les packages installé via `NPM` ou `Yarn`
+/public       # Dossier contenant les fichiers compilés par brunch
