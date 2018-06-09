@@ -1,4 +1,11 @@
 const app = {
+  /**
+   * Compteur des tâches
+   */
+  count: 0,
+  /**
+   * Point de départ de l'appli
+   */
   init: function() {
     // Je stocke #todo, la cible pour les éléments de l'application
     app.todo = document.getElementById('todo');
@@ -47,7 +54,9 @@ const app = {
     counter.id = 'todoCounter';
 
     // Ajouter du contenu
-    counter.textContent = '0 tâche en cours';
+    counter.textContent = `${app.count} ${app.count > 1 ? 'tâches' : 'tâche'} en cours`;
+
+    app.counter = counter;
 
     // Ajout du compteur à la #todo
     app.todo.appendChild(counter);
@@ -131,9 +140,18 @@ const app = {
     // Ajout de cette tâche à la liste
     app.list.appendChild(task);
 
+    // On incrémente le compteur de tâche
+    app.count++;
+
+    // On met à jour l'affichage du compteur
+    app.updateCount();
+
     // Vider l'input
     app.input.value = '';
-  }
+  },
+  updateCount: function() {
+    app.counter.textContent = `${app.count} ${app.count > 1 ? 'tâches' : 'tâche'} en cours`;
+  },
 };
 
 document.addEventListener('DOMContentLoaded', app.init);
