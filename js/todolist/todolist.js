@@ -108,6 +108,25 @@ const app = {
     var checkbox = document.createElement('input');
     checkbox.type = 'checkbox';
     checkbox.checked = data.done;
+    checkbox.addEventListener('click', function() {
+      // On test si la checkbox a été cochée/décochée
+      if (this.checked) {
+        // On ajoute la classe task-done à la tâche
+        task.classList.add('task-done');
+
+        // On décrémente le compteur
+        app.count--;
+      } else {
+        // On retire la classe task-done de la tâche
+        task.classList.remove('task-done');
+
+        // On incrémente le compteur
+        app.count++;
+      }
+
+      // On met à jour l'affichage du compteur
+      app.updateCount();
+    });
 
     // Gestion du label via un span
     var label = document.createElement('span');
