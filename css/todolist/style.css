@@ -28,3 +28,22 @@ body {
   border-bottom: 1px solid #fff;
   padding: .5em 0;
 }
+
+#todoList {
+  margin-top: 1em;
+  list-style: none;
+  padding: 0;
+}
+
+.task {
+  background: #eee;
+  border: 1px solid #ccc;
+  border-radius: .3em;
+  font-size: 1.2em;
+  padding: 1em;
+  margin: .5em 0;
+}
+
+.task-done {
+  opacity: 0.5;
+}

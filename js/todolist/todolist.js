@@ -53,6 +53,27 @@ const app = {
    */
   createList: function() {
     console.log('createList');
+
+    // Construire la liste
+    var list = document.createElement('ul');
+    list.id = 'todoList';
+
+    // Tâche 1 pour exemple
+    var task1 = document.createElement('li');
+    task1.textContent = 'Je code Facebook';
+    task1.className = 'task';
+
+    // Tâche 2 pour exemple
+    var task2 = document.createElement('li');
+    task2.textContent = 'Je code une todolist';
+    task2.className = 'task';
+
+    // Ajouter les tâches à la liste
+    list.appendChild(task1);
+    list.appendChild(task2);
+
+    // Ajouter la liste à #todo
+    app.todo.appendChild(list);
   },
 };
 
