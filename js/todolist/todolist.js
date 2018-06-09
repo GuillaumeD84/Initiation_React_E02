@@ -59,14 +59,16 @@ const app = {
     list.id = 'todoList';
 
     // Tâche 1 pour exemple
-    var task1 = document.createElement('li');
-    task1.textContent = 'Je code Facebook';
-    task1.className = 'task';
+    var task1 = app.generateTask({
+      label: 'Je code Facebook',
+      done: false
+    });
 
     // Tâche 2 pour exemple
-    var task2 = document.createElement('li');
-    task2.textContent = 'Je code une todolist';
-    task2.className = 'task';
+    var task2 = app.generateTask({
+      label: 'Je code une todolist',
+      done: true
+    });
 
     // Ajouter les tâches à la liste
     list.appendChild(task1);
@@ -74,6 +76,13 @@ const app = {
 
     // Ajouter la liste à #todo
     app.todo.appendChild(list);
+  },
+  generateTask: function(data) {
+    var task = document.createElement('li');
+    task.className = 'task';
+    task.textContent = data.label;
+
+    return task;
   },
 };
 
