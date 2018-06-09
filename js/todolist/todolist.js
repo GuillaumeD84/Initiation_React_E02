@@ -20,12 +20,15 @@ const app = {
 
     // Construire le formulaire <form>
     var form = document.createElement('form');
+    form.addEventListener('submit', app.addTask);
 
     // Construire le champ pour le label de la tâche
     var input = document.createElement('input');
     input.type = 'text';
     input.id = 'todoInput';
     input.placeholder = 'Ajouter une tâche';
+    // J'ajoute cet input à 'app'
+    app.input = input;
 
     // Ajouter le champ dans le formulaire
     form.appendChild(input);
@@ -44,7 +47,7 @@ const app = {
     counter.id = 'todoCounter';
 
     // Ajouter du contenu
-    counter.textContent = '2 tâches en cours';
+    counter.textContent = '0 tâche en cours';
 
     // Ajout du compteur à la #todo
     app.todo.appendChild(counter);
@@ -58,22 +61,23 @@ const app = {
     // Construire la liste
     var list = document.createElement('ul');
     list.id = 'todoList';
+    app.list = list;
 
-    // Tâche 1 pour exemple
-    var task1 = app.generateTask({
-      label: 'Je code Facebook',
-      done: false
-    });
-
-    // Tâche 2 pour exemple
-    var task2 = app.generateTask({
-      label: 'Je code une todolist',
-      done: true
-    });
-
-    // Ajouter les tâches à la liste
-    list.appendChild(task1);
-    list.appendChild(task2);
+    // // Tâche 1 pour exemple
+    // var task1 = app.generateTask({
+    //   label: 'Je code Facebook',
+    //   done: false
+    // });
+    //
+    // // Tâche 2 pour exemple
+    // var task2 = app.generateTask({
+    //   label: 'Je code une todolist',
+    //   done: true
+    // });
+    //
+    // // Ajouter les tâches à la liste
+    // list.appendChild(task1);
+    // list.appendChild(task2);
 
     // Ajouter la liste à #todo
     app.todo.appendChild(list);
@@ -107,6 +111,29 @@ const app = {
     // Retour de la tâche
     return task;
   },
+  /**
+   * Ajoute une tâche soumise via le form à la liste
+   * handler de la soumission du form
+   */
+  addTask: function(evt) {
+    // On bloque le comportement par défaut du formulaire
+    evt.preventDefault();
+
+    // On récupère la valeur de l'input
+    var label = app.input.value.trim();
+
+    // On créer la nouvelle tâche
+    var task = app.generateTask({
+      label: label,
+      done: false
+    });
+
+    // Ajout de cette tâche à la liste
+    app.list.appendChild(task);
+
+    // Vider l'input
+    app.input.value = '';
+  }
 };
 
 document.addEventListener('DOMContentLoaded', app.init);
