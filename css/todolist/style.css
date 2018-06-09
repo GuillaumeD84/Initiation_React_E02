@@ -47,3 +47,11 @@ body {
 .task-done {
   opacity: 0.5;
 }
+
+.task-label {
+  margin-left: .5em;
+}
+
+.task-done .task-label {
+  text-decoration: line-through;
+}

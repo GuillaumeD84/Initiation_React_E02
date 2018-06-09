@@ -23,6 +23,7 @@ const app = {
 
     // Construire le champ pour le label de la tâche
     var input = document.createElement('input');
+    input.type = 'text';
     input.id = 'todoInput';
     input.placeholder = 'Ajouter une tâche';
 
@@ -77,11 +78,33 @@ const app = {
     // Ajouter la liste à #todo
     app.todo.appendChild(list);
   },
+  /**
+   * Création d'une tâche
+   */
   generateTask: function(data) {
+    // Création du <li>
     var task = document.createElement('li');
-    task.className = 'task';
-    task.textContent = data.label;
 
+    // Ajout de classe
+    task.className = 'task';
+    if (data.done) {
+      task.classList.add('task-done');
+    }
+
+    // Ajouter une checkbox
+    var checkbox = document.createElement('input');
+    checkbox.type = 'checkbox';
+    checkbox.checked = data.done;
+
+    // Gestion du label via un span
+    var label = document.createElement('span');
+    label.textContent = data.label;
+    label.className = 'task-label';
+
+    task.appendChild(checkbox);
+    task.appendChild(label);
+
+    // Retour de la tâche
     return task;
   },
 };
